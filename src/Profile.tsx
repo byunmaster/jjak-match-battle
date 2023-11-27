@@ -17,11 +17,9 @@ export default function Profile({ name, score, active }: { name: string; score: 
   return (
     <div className={`profile ${active && 'active'}`.trimEnd()}>
       <h1>{image}</h1>
-      <div className="container">
-        <h4>
-          <b>{name}</b>
-        </h4>
-        <p>{score}</p>
+      <div>
+        <h4>{name}</h4>
+        <h2>{score}</h2>
       </div>
     </div>
   );

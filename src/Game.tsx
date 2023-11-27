@@ -275,12 +275,20 @@ export default function Game() {
 
   return (
     <div className="wrap-game">
-      <h2>Stage {stage}</h2>
-      <h2>{count > 0 ? count : 'Fight'}</h2>
-      <div className="wrap-board">
+      <header>
         <div className="wrap-profile">
           <Profile name="나" score={myScore} active={turn === TURN.My} />
         </div>
+        <div>
+          <h2>Stage {stage}</h2>
+          <h2>{count > 0 ? count : 'Fight'}</h2>
+        </div>
+        <div className="wrap-profile">
+          <Profile name="COM" score={comScore} active={turn === TURN.Com} />
+        </div>
+      </header>
+
+      <div className="wrap-board">
         <div className="board">
           {cards.map((card, index) => (
             <CardItem
@@ -290,9 +298,6 @@ export default function Game() {
               onClick={turn === TURN.My ? () => handleCardClick(card) : () => {}}
             />
           ))}
-        </div>
-        <div className="wrap-profile">
-          <Profile name="COM" score={comScore} active={turn === TURN.Com} />
         </div>
       </div>
     </div>
