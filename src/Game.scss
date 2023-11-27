@@ -1,0 +1,18 @@
+.wrap-game {
+  text-align: center;
+}
+
+.wrap-board {
+  display: flex;
+  justify-content: center;
+
+  .board {
+    width: 56rem;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    .card {
+      margin: 0.5rem;
+    }
+  }
+}
