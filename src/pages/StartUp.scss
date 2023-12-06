@@ -1,0 +1,38 @@
+.wrap-start-up {
+  text-align: center;
+
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 40rem;
+    top: 8rem;
+    background: url('../assets/images/startup.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+  }
+
+  .title {
+    font-size: 4rem;
+  }
+
+  .menu {
+    position: fixed;
+    width: 100%;
+    bottom: 4rem;
+    display: flex;
+    justify-content: center;
+
+    .menu__list {
+      width: 12rem;
+
+      button {
+        width: 12rem;
+        height: 4rem;
+        font-size: 2rem;
+        margin: 0.4rem 0;
+      }
+    }
+  }
+}

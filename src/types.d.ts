@@ -1,4 +1,4 @@
-interface Card {
+interface ICard {
   id: number;
   opened: boolean;
   image?: string;

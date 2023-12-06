@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import './Game.scss';
-import CardItem from './CardItem';
-import Profile from './Profile';
+import Card from '../components/Card';
+import Profile from '../components/Profile';
 
 const TURN = {
   None: 0,
@@ -118,7 +118,7 @@ const cardData = [
 ].map((text, index) => ({ id: index, text, opened: false }));
 
 const pickUp = (count: number) => {
-  const result: Card[] = [];
+  const result: ICard[] = [];
   while (result.length < count * 2) {
     const index = Math.floor(Math.random() * cardData.length);
     if (!result.includes(cardData[index])) {
@@ -129,10 +129,10 @@ const pickUp = (count: number) => {
   return result.sort(() => Math.random() - 0.5);
 };
 
-const com: { memory: number; memorized: Card[]; addMemory(card: Card): void } = {
+const com: { memory: number; memorized: ICard[]; addMemory(card: ICard): void } = {
   memory: 5,
   memorized: [],
-  addMemory(card: Card) {
+  addMemory(card: ICard) {
     if (this.memorized.includes(card)) {
       return;
     }
@@ -150,8 +150,8 @@ export default function Game() {
   const [comScore, setComScore] = useState(0);
   const [turn, setTurn] = useState(TURN.None);
 
-  const [cards, setCards] = useState<Card[]>(pickUp(15));
-  const [openedCards, setOpenedCards] = useState<Card[]>([]);
+  const [cards, setCards] = useState<ICard[]>(pickUp(15));
+  const [openedCards, setOpenedCards] = useState<ICard[]>([]);
 
   const start = () => {
     let count = 3;
@@ -173,7 +173,7 @@ export default function Game() {
   }, []);
 
   const handleCardClick = useCallback(
-    (card: Card) => {
+    (card: ICard) => {
       if (openedCards.length >= 2 || !card || card.opened) {
         return;
       }
@@ -291,7 +291,7 @@ export default function Game() {
       <div className="wrap-board">
         <div className="board">
           {cards.map((card, index) => (
-            <CardItem
+            <Card
               key={`${index}-${card.id}`}
               card={card}
               opened={count > 0 || card.opened}

@@ -1,6 +1,6 @@
-import './CardItem.scss';
+import './Card.scss';
 
-export default function CardItem({ card, opened, onClick }: { card: Card; opened: boolean; onClick(): void }) {
+export default function Card({ card, opened, onClick }: { card: ICard; opened: boolean; onClick(): void }) {
   const { text } = card;
 
   return (
